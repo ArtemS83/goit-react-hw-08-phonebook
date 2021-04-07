@@ -45,9 +45,9 @@ const App = () => {
       >
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route exact path="/contacts" component={ContactsPage} />
-          <Route exact path="/register" component={RegisterPage} />
-          <Route exact path="/login" component={LoginPage} />
+          <Route path="/contacts" component={ContactsPage} />
+          <Route path="/register" component={RegisterPage} />
+          <Route path="/login" component={LoginPage} />
           <Redirect to="/" />
         </Switch>
       </Suspense>

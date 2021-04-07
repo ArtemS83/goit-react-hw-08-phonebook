@@ -9,8 +9,6 @@ const useStyles = createUseStyles({
     padding: {
       right: 24,
       left: 24,
-      top: 12,
-      bottom: 12,
     },
     color: '#fff',
     // backgroundColor: 'rgb(125, 19, 196, 0.7)',
@@ -24,11 +22,21 @@ const useStyles = createUseStyles({
     },
   },
   link: {
-    fontSize: 20,
+    fontSize: 22,
+    fontWeight: 500,
     color: '#2a2a2a',
+    padding: {
+      top: 12,
+      bottom: 12,
+    },
+    transition: 'all 300ms ease-in-out',
+    '&:hover,&:focus': {
+      color: '#279ae7',
+      transform: 'scale(1.05)',
+    },
   },
   activeLink: {
-    color: '#2ff2e2',
+    color: '#279ae7',
   },
 });
 
@@ -53,7 +61,7 @@ const AuthNav = () => {
             className={classes.link}
             activeClassName={classes.activeLink}
           >
-            Log In
+            Login
           </NavLink>
         </li>
       </ul>

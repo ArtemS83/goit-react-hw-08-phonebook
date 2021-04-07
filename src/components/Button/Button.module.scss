@@ -11,7 +11,7 @@
   transition: all 300ms ease-in-out;
   &:hover,
   &:focus {
-    background-color: rgb(206, 110, 211);
+    background-color: #78beec; //78beec //rgb(206, 110, 211)
     transform: scale(1.03);
   }
 }
