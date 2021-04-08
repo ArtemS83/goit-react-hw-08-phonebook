@@ -52,7 +52,7 @@ const AuthNav = () => {
             className={classes.link}
             activeClassName={classes.activeLink}
           >
-            Registration
+            Sing up
           </NavLink>
         </li>
         <li>

@@ -35,7 +35,7 @@ const ContactItem = ({ name, number, id }) => {
       <MdPhoneAndroid />
       <span className={classes.name}>{name}:</span>
       <span className={classes.number}>{number}</span>
-      <Button title="Delete" onDelete={hendelDeleteContact} />
+      <Button title="Delete" onClick={hendelDeleteContact} />
     </li>
   );
 };

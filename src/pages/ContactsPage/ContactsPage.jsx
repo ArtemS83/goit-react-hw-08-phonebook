@@ -30,7 +30,7 @@ const ContactsPage = () => {
         {/* {isLoading && <h1>Загружаем...</h1>} */}
         <Loader
           type="Puff"
-          color="#78beec"
+          color="#1f6ce0"
           height={70}
           width={70}
           visible={isLoading}

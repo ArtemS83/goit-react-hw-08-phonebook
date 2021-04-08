@@ -6,6 +6,7 @@ const useStyles = createUseStyles({
   list: {
     display: 'flex',
     alignItems: 'center',
+
     minHeight: 64,
     padding: {
       right: 24,
@@ -20,6 +21,7 @@ const useStyles = createUseStyles({
     // ],
     '& li': {
       marginRight: 20,
+      width: '100%',
     },
   },
   link: {

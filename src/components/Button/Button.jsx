@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import style from './Button.module.scss';
 
-const Button = ({ title, type, onDelete }) => {
+const Button = ({ title, type, onClick }) => {
   return (
     <button
       className={type === 'button' ? style.buttonButton : style.button}
       type={type}
-      onClick={onDelete}
+      onClick={onClick}
     >
       {title}
     </button>

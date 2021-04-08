@@ -11,7 +11,7 @@ const Loader1 = ({ isLoading = true }) => {
       corners={1}
       rotate={0}
       direction={1}
-      color="#78beec"
+      color="#1f6ce0"
       speed={1}
       trail={60}
       shadow={false}

@@ -16,6 +16,7 @@ import { lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AppBar from 'components/AppBar';
 import Loader1 from 'components/Loader1';
+import authOperations from 'redux/auth/auth-operations';
 
 const HomePage = lazy(() =>
   import('pages/HomePage' /* webpackChunkName: "home-page" */),
@@ -34,6 +35,10 @@ const LoginPage = lazy(() =>
 );
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, []); // eslint-disable-line
   return (
     <>
       <AppBar />
