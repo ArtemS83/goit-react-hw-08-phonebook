@@ -19,6 +19,11 @@ import Loader1 from 'components/Loader1';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 import authOperations from 'redux/auth/auth-operations';
+//TODO delete
+// import HomePage from 'pages/HomePage';
+// import ContactsPage from 'pages/ContactsPage';
+// import RegisterPage from 'pages/RegisterPage';
+// import LoginPage from 'pages/LoginPage';
 
 const HomePage = lazy(() =>
   import('pages/HomePage' /* webpackChunkName: "home-page" */),
@@ -38,6 +43,7 @@ const LoginPage = lazy(() =>
 
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
   }, []); // eslint-disable-line
