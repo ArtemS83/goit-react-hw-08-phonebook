@@ -17,7 +17,7 @@ const useStyles = createUseStyles({
     //   [0, 4, 5, 0, 'rgba(0, 0, 0, 0.14)'],
     //   [0, 1, 10, 0, 'rgba(0, 0, 0, 0.12)'], // box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     // ],
-    '& li': {
+    '& a': {
       marginRight: 20,
     },
   },
@@ -43,28 +43,23 @@ const useStyles = createUseStyles({
 const AuthNav = () => {
   const classes = useStyles();
   return (
-    <nav>
-      <ul className={classes.list}>
-        <li>
-          <NavLink
-            exact
-            to="/register"
-            className={classes.link}
-            activeClassName={classes.activeLink}
-          >
-            Sing up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/login"
-            className={classes.link}
-            activeClassName={classes.activeLink}
-          >
-            Login
-          </NavLink>
-        </li>
-      </ul>
+    <nav className={classes.list}>
+      <NavLink
+        exact
+        to="/register"
+        className={classes.link}
+        activeClassName={classes.activeLink}
+      >
+        Sing up
+      </NavLink>
+
+      <NavLink
+        to="/login"
+        className={classes.link}
+        activeClassName={classes.activeLink}
+      >
+        Login
+      </NavLink>
     </nav>
   );
 };

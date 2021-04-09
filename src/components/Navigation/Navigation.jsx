@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import { createUseStyles } from 'react-jss';
+import { useSelector } from 'react-redux';
 import imageHomePage from 'images/21.png';
+import authSelectors from 'redux/auth/auth-selectors';
 
 const useStyles = createUseStyles({
   list: {
@@ -19,9 +21,9 @@ const useStyles = createUseStyles({
     //   [0, 4, 5, 0, 'rgba(0, 0, 0, 0.14)'],
     //   [0, 1, 10, 0, 'rgba(0, 0, 0, 0.12)'], // box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     // ],
-    '& li': {
+    '& a': {
       marginRight: 20,
-      width: '100%',
+      // width: '100%',
     },
   },
   link: {
@@ -49,45 +51,43 @@ const useStyles = createUseStyles({
 
 const Navigation = () => {
   const classes = useStyles();
+  const IsAuthenticated = useSelector(authSelectors.getIsAuthenticated);
+
   return (
-    <nav>
-      <ul className={classes.list}>
-        <li>
-          <NavLink
-            exact
-            to="/"
-            className={classes.link}
-            activeClassName={classes.activeLink}
-          >
-            <img
-              className={classes.logo}
-              src={imageHomePage}
-              alt="My phonebook poster"
-              width="50"
-              height="50"
-            />
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            exact
-            to="/"
-            className={classes.link}
-            activeClassName={classes.activeLink}
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/contacts"
-            className={classes.link}
-            activeClassName={classes.activeLink}
-          >
-            Contacts
-          </NavLink>
-        </li>
-      </ul>
+    <nav className={classes.list}>
+      <NavLink
+        exact
+        to="/"
+        className={classes.link}
+        activeClassName={classes.activeLink}
+      >
+        <img
+          className={classes.logo}
+          src={imageHomePage}
+          alt="phonebook poster"
+          width="50"
+          height="50"
+        />
+      </NavLink>
+
+      <NavLink
+        exact
+        to="/"
+        className={classes.link}
+        activeClassName={classes.activeLink}
+      >
+        Home
+      </NavLink>
+
+      {IsAuthenticated && (
+        <NavLink
+          to="/contacts"
+          className={classes.link}
+          activeClassName={classes.activeLink}
+        >
+          Contacts
+        </NavLink>
+      )}
     </nav>
   );
 };

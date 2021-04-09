@@ -16,6 +16,8 @@ import { lazy, Suspense } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AppBar from 'components/AppBar';
 import Loader1 from 'components/Loader1';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 import authOperations from 'redux/auth/auth-operations';
 
 const HomePage = lazy(() =>
@@ -49,10 +51,24 @@ const App = () => {
         }
       >
         <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/contacts" component={ContactsPage} />
-          <Route path="/register" component={RegisterPage} />
-          <Route path="/login" component={LoginPage} />
+          <PublicRoute path="/" exact component={HomePage} />
+          <PrivateRoute
+            path="/contacts"
+            redirectTo="/login"
+            component={ContactsPage}
+          />
+          <PublicRoute
+            path="/register"
+            restricted
+            redirectTo="/contacts"
+            component={RegisterPage}
+          />
+          <PublicRoute
+            path="/login"
+            restricted
+            redirectTo="/contacts"
+            component={LoginPage}
+          />
           <Redirect to="/" />
         </Switch>
       </Suspense>

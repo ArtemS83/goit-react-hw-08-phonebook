@@ -49,14 +49,14 @@ export default ContactItem;
 
 //=====================REDUX-{ connect } ===============//
 
-// const ContactItem = ({ name, number, id, onDelete }) => {
+// const ContactItem = ({ name, number, id, onClick }) => {
 //   const classes = useStyles();
 //   return (
 //     <li className={classes.item}>
 //       <MdPhoneAndroid />
 //       <span className={classes.name}>{name}:</span>
 //       <span className={classes.number}>{number}</span>
-//       <Button title="Delete" id={id} onDelete={onDelete} />
+//       <Button title="Delete" id={id} onClick={onDelete} />
 //     </li>
 //   );
 // };
@@ -64,10 +64,10 @@ export default ContactItem;
 // ContactItem.propTypes = {
 //   name: PropTypes.string.isRequired,
 //   number: PropTypes.string.isRequired,
-//   onDelete: PropTypes.func.isRequired,
+//   onClick: PropTypes.func.isRequired,
 // };
 
 // const mapDispatchToProps = dispatch => ({
-//   onDelete: id => dispatch(deleteContact(id)),
+//   onClick: id => dispatch(deleteContact(id)),
 // });
 // export default connect(null, mapDispatchToProps)(ContactItem);
