@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/contacts-operations';
 import Button from 'components/Button';
+import Modal from 'components/Modal';
 import { MdPhoneAndroid } from 'react-icons/md';
 import { createUseStyles } from 'react-jss';
 
@@ -21,22 +22,50 @@ const useStyles = createUseStyles({
   number: {
     color: 'rgb(79, 119, 238)',
   },
+  divButton: {
+    marginLeft: 'auto',
+    '& button': {
+      marginRight: 5,
+      marginBottom: 5,
+    },
+  },
 });
 
-//====================Filter REDUX-HOOKS ===============//
-
 const ContactItem = ({ name, number, id }) => {
+  const classes = useStyles();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const hendelCloseModal = () => {
+    setShowModal(false);
+  };
+
   const dispatch = useDispatch();
+
   const hendelDeleteContact = () => dispatch(deleteContact(id));
 
-  const classes = useStyles();
+  const hendelOpenModalUpdateContact = () => setShowModal(true);
+
   return (
-    <li className={classes.item}>
-      <MdPhoneAndroid />
-      <span className={classes.name}>{name}:</span>
-      <span className={classes.number}>{number}</span>
-      <Button title="Delete" onClick={hendelDeleteContact} />
-    </li>
+    <>
+      <li className={classes.item}>
+        <MdPhoneAndroid />
+        <span className={classes.name}>{name}:</span>
+        <span className={classes.number}>{number}</span>
+        <div className={classes.divButton}>
+          <Button title="Update" onClick={hendelOpenModalUpdateContact} />
+          <Button title="Delete" onClick={hendelDeleteContact} />
+        </div>
+      </li>
+      {showModal && (
+        <Modal
+          id={id}
+          nameForUpdate={name}
+          numberForUpdate={number}
+          onCloseModal={hendelCloseModal}
+        />
+      )}
+    </>
   );
 };
 
@@ -46,28 +75,3 @@ ContactItem.propTypes = {
 };
 
 export default ContactItem;
-
-//=====================REDUX-{ connect } ===============//
-
-// const ContactItem = ({ name, number, id, onClick }) => {
-//   const classes = useStyles();
-//   return (
-//     <li className={classes.item}>
-//       <MdPhoneAndroid />
-//       <span className={classes.name}>{name}:</span>
-//       <span className={classes.number}>{number}</span>
-//       <Button title="Delete" id={id} onClick={onDelete} />
-//     </li>
-//   );
-// };
-
-// ContactItem.propTypes = {
-//   name: PropTypes.string.isRequired,
-//   number: PropTypes.string.isRequired,
-//   onClick: PropTypes.func.isRequired,
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   onClick: id => dispatch(deleteContact(id)),
-// });
-// export default connect(null, mapDispatchToProps)(ContactItem);

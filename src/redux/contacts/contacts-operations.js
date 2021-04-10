@@ -9,6 +9,9 @@ import {
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
+  updateContactRequest,
+  updateContactSuccess,
+  updateContactError,
 } from '../../redux/contacts/contacts-actions';
 
 export const fetchContacts = () => dispatch => {
@@ -37,4 +40,18 @@ export const deleteContact = id => dispatch => {
     .delete(`/contacts/${id}`)
     .then(() => dispatch(deleteContactSuccess(id)))
     .catch(error => dispatch(deleteContactError(error.message)));
+};
+
+export const updateContact = (id, name, number) => dispatch => {
+  const contact = {
+    name,
+    number,
+  };
+  dispatch(updateContactRequest());
+  axios
+    .patch(`/contacts/${id}`, contact)
+    .then(({ data }) => {
+      dispatch(updateContactSuccess(data));
+    })
+    .catch(error => dispatch(updateContactError(error.message)));
 };

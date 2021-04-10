@@ -1,10 +1,9 @@
-// import { createSelector } from 'reselect';
 import { createSelector } from '@reduxjs/toolkit';
 
 export const getContacts = state => state.contacts.items;
 
 export const getFilter = state => state.contacts.filter;
-
+// проверяет изменился ли state(items и filter), чтобы без надобности не рендерить
 export const getVisibleContacts = createSelector(
   [getContacts, getFilter],
   (contacts, filter) => {

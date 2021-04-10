@@ -1,29 +1,12 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Loader from 'react-loader-spinner';
-import Section from 'components/Section';
-import ContactsInputForm from 'components/ContactsInputForm';
-import Filter from 'components/Filter';
-import Contacts from 'components/Contacts';
-import Notification from 'components/Notification';
-import {
-  getContacts,
-  getIsLoadingSelector,
-} from 'redux/contacts/contacts-selectors';
-import { fetchContacts } from './redux/contacts/contacts-operations';
-// import ContactsPage from 'pages/ContactsPage';
+import { useDispatch } from 'react-redux';
 import { lazy, Suspense } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import AppBar from 'components/AppBar';
 import Loader1 from 'components/Loader1';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 import authOperations from 'redux/auth/auth-operations';
-//TODO delete
-// import HomePage from 'pages/HomePage';
-// import ContactsPage from 'pages/ContactsPage';
-// import RegisterPage from 'pages/RegisterPage';
-// import LoginPage from 'pages/LoginPage';
 
 const HomePage = lazy(() =>
   import('pages/HomePage' /* webpackChunkName: "home-page" */),
