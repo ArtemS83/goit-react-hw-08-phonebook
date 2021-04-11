@@ -44,9 +44,10 @@ const Modal = ({ id, nameForUpdate, numberForUpdate, onCloseModal }) => {
     }
 
     const normalizedName = name.toLowerCase().trim();
-    const isExistingUser = contacts.find(
-      contact => contact.name.toLowerCase() === normalizedName,
-    );
+
+    const isExistingUser = contacts
+      .filter(contact => contact.id !== id)
+      .find(contact => contact.name.toLowerCase() === normalizedName);
 
     if (isExistingUser) {
       swal('Warning!', `${name} is already in contacts!`, 'warning');
